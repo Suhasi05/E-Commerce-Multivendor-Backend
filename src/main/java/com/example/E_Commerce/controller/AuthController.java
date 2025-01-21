@@ -2,6 +2,10 @@ package com.example.E_Commerce.controller;
 
 import com.example.E_Commerce.Repository.UserRepository;
 import com.example.E_Commerce.domain.USER_ROLE;
+import com.example.E_Commerce.modal.VerificationCode;
+import com.example.E_Commerce.request.LoginOtpRequest;
+import com.example.E_Commerce.request.LoginRequest;
+import com.example.E_Commerce.response.ApiResponse;
 import com.example.E_Commerce.response.AuthResponse;
 import com.example.E_Commerce.response.SignupRequest;
 import com.example.E_Commerce.service.AuthService;
@@ -30,5 +34,19 @@ public class AuthController {
         res.setMessage("Successfully created user");
         res.setRole(USER_ROLE.ROLE_CUSTOMER);
         return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/sent/otp")
+    public ResponseEntity<ApiResponse> sentOtpHandler(@RequestBody LoginOtpRequest req) {
+        authService.sentLoginOtp(req.getEmail(), req.getRole());
+        ApiResponse res = new ApiResponse();
+        res.setMessage("Otp sent successfully");
+        return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/signing")
+    public ResponseEntity<AuthResponse> loginHandler(@RequestBody LoginRequest req) throws Exception {
+        AuthResponse authResponse = authService.signin(req);
+        return ResponseEntity.ok(authResponse);
     }
 }
