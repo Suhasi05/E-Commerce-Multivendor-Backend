@@ -1,5 +1,6 @@
 package com.example.E_Commerce.service;
 
+import com.example.E_Commerce.Exception.SellerException;
 import com.example.E_Commerce.domain.AccountStatus;
 import com.example.E_Commerce.modal.Seller;
 
