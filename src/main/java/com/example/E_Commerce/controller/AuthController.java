@@ -2,12 +2,11 @@ package com.example.E_Commerce.controller;
 
 import com.example.E_Commerce.Repository.UserRepository;
 import com.example.E_Commerce.domain.USER_ROLE;
-import com.example.E_Commerce.modal.VerificationCode;
 import com.example.E_Commerce.request.LoginOtpRequest;
 import com.example.E_Commerce.request.LoginRequest;
 import com.example.E_Commerce.response.ApiResponse;
 import com.example.E_Commerce.response.AuthResponse;
-import com.example.E_Commerce.response.SignupRequest;
+import com.example.E_Commerce.request.SignupRequest;
 import com.example.E_Commerce.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

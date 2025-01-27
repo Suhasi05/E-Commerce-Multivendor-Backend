@@ -1,4 +1,4 @@
-package com.example.E_Commerce.response;
+package com.example.E_Commerce.request;
 
 import lombok.Getter;
 import lombok.Setter;

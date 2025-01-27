@@ -100,7 +100,7 @@ public class SellerServiceImpl implements SellerService {
                 && seller.getPickUpAddress().getPhone() != null
                 && seller.getPickUpAddress().getCity() != null
                 && seller.getPickUpAddress().getState() != null
-        && seller.getPickUpAddress().getLocality() != null) {
+                && seller.getPickUpAddress().getLocality() != null) {
             existingSeller.getPickUpAddress().setAddress(seller.getPickUpAddress().getAddress());
             existingSeller.getPickUpAddress().setPhone(seller.getPickUpAddress().getPhone());
             existingSeller.getPickUpAddress().setCity(seller.getPickUpAddress().getCity());

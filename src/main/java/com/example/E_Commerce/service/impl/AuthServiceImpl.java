@@ -12,7 +12,7 @@ import com.example.E_Commerce.modal.User;
 import com.example.E_Commerce.modal.VerificationCode;
 import com.example.E_Commerce.request.LoginRequest;
 import com.example.E_Commerce.response.AuthResponse;
-import com.example.E_Commerce.response.SignupRequest;
+import com.example.E_Commerce.request.SignupRequest;
 import com.example.E_Commerce.service.AuthService;
 import com.example.E_Commerce.service.EmailService;
 import com.example.E_Commerce.utils.OtpUtil;

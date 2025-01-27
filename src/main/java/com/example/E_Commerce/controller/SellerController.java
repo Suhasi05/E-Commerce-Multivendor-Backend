@@ -50,7 +50,7 @@ public class SellerController {
     public ResponseEntity<Seller> verifySellerEmail(@PathVariable String otp) throws Exception {
         VerificationCode verificationCode = verificationCodeRepository.findByOtp(otp);
         if (verificationCode == null || !verificationCode.getOtp().equals(otp)) {
-            throw new Exception("Erong otp");
+            throw new Exception("Wrong otp");
         }
         Seller seller = sellerService.verifyEmail(verificationCode.getEmail(), otp);
         return new ResponseEntity<>(seller, HttpStatus.OK);
@@ -105,6 +105,7 @@ public class SellerController {
         return new ResponseEntity<>(updatedSeller, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSeller(@PathVariable Long id) throws Exception {
         sellerService.deleteSeller(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
