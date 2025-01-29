@@ -1,5 +1,6 @@
 package com.example.E_Commerce.controller;
 
+import com.example.E_Commerce.Exception.SellerException;
 import com.example.E_Commerce.Repository.VerificationCodeRepository;
 import com.example.E_Commerce.config.JwtProvider;
 import com.example.E_Commerce.domain.AccountStatus;
@@ -11,6 +12,7 @@ import com.example.E_Commerce.response.ApiResponse;
 import com.example.E_Commerce.response.AuthResponse;
 import com.example.E_Commerce.service.AuthService;
 import com.example.E_Commerce.service.EmailService;
+import com.example.E_Commerce.service.SellerReportService;
 import com.example.E_Commerce.service.SellerService;
 import com.example.E_Commerce.utils.OtpUtil;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,8 @@ public class SellerController {
     private EmailService emailService;
     @Autowired
     private JwtProvider jwtProvider;
+    @Autowired
+    private final SellerReportService sellerReportService;
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> loginSeller(@RequestBody LoginRequest req) throws Exception {
@@ -85,12 +89,12 @@ public class SellerController {
         return new ResponseEntity<>(seller, HttpStatus.OK);
     }
 
-//    @GetMapping("/report")
-//    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
-//        Seller seller = sellerService.getSellerProfileFromJwtToken(jwt);
-//        SellerReport report = sellerReportService.getSellerReport(Seller);
-//        return new ResponseEntity<>(report, HttpStatus.OK);
-//    }
+    @GetMapping("/report")
+    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
+        Seller seller = sellerService.getSellerProfileFromJwtToken(jwt);
+        SellerReport report = sellerReportService.getSellerReport(seller);
+        return new ResponseEntity<>(report, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<Seller>> getAllSellers(@RequestParam(required = true)AccountStatus status) {
