@@ -1,5 +1,10 @@
 package com.example.E_Commerce.request;
 
-public class AddItemRequest {
+import lombok.Data;
 
+@Data
+public class AddItemRequest {
+    private String size;
+    private int quantity;
+    private Long productId;
 }
